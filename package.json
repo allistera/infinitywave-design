@@ -1,0 +1,13 @@
+{
+  "name": "infinitywave-design",
+  "version": "1.0.0",
+  "description": "Modern web application for InfinityWave Design & Architecture Company",
+  "main": "index.html",
+  "scripts": {
+    "start": "python3 -m http.server 8000",
+    "dev": "live-server ."
+  },
+  "keywords": ["design", "architecture", "portfolio", "website"],
+  "author": "InfinityWave Design",
+  "license": "MIT"
+}
