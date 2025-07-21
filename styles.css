@@ -5,6 +5,11 @@
     box-sizing: border-box;
 }
 
+/* Utility Classes */
+.hidden {
+    display: none !important;
+}
+
 html {
     scroll-behavior: smooth;
 }

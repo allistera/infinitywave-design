@@ -42,7 +42,12 @@
                         <h2>Start Your Home Project</h2>
                         <p>Ready to design your dream home with Scotland's premier design studio? Fill out the form below and we'll get back to you within 24 hours.</p>
                         
-                        <form class="contact-form" id="contactForm">
+                        <form class="contact-form" id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                            <p class="hidden">
+                                <label>
+                                    Don't fill this out if you're human: <input name="bot-field" />
+                                </label>
+                            </p>
                             <div class="form-group">
                                 <label for="name">Full Name</label>
                                 <input type="text" id="name" name="name" required>

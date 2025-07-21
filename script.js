@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Contact form handling
+    // Contact form handling with Netlify Forms support
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
@@ -94,19 +94,32 @@ document.addEventListener('DOMContentLoaded', function() {
             });
 
             if (isValid) {
-                // Simulate form submission
                 const submitButton = contactForm.querySelector('button[type="submit"]');
                 const originalText = submitButton.textContent;
                 
                 submitButton.textContent = 'Sending...';
                 submitButton.disabled = true;
                 
-                setTimeout(() => {
+                // Submit form data to Netlify
+                const formData = new FormData(contactForm);
+                
+                fetch('/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: new URLSearchParams(formData).toString()
+                })
+                .then(() => {
                     alert('Thank you for your message! We\'ll get back to you within 24 hours.');
                     contactForm.reset();
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                    alert('There was an error sending your message. Please try again or contact us directly.');
+                })
+                .finally(() => {
                     submitButton.textContent = originalText;
                     submitButton.disabled = false;
-                }, 2000);
+                });
             } else {
                 alert('Please fill in all required fields.');
             }
