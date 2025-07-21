@@ -229,12 +229,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize interactive map
     const mapElement = document.getElementById('map');
     if (mapElement && typeof L !== 'undefined') {
-        // Edinburgh, Scotland coordinates
-        const edinburghLat = 55.9533;
-        const edinburghLng = -3.1883;
+        // Livingston, Scotland coordinates
+        const livingstonLat = 55.8864;
+        const livingstonLng = -3.5230;
         
         // Initialize the map
-        const map = L.map('map').setView([edinburghLat, edinburghLng], 13);
+        const map = L.map('map').setView([livingstonLat, livingstonLng], 13);
         
         // Add OpenStreetMap tiles
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -242,15 +242,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }).addTo(map);
         
         // Add marker for our studio location
-        const marker = L.marker([edinburghLat, edinburghLng]).addTo(map);
+        const marker = L.marker([livingstonLat, livingstonLng]).addTo(map);
         
         // Add popup to marker
         marker.bindPopup(`
             <div style="text-align: center;">
                 <strong>InfinityWave Design</strong><br>
-                123 Design Street<br>
-                Creative Quarter<br>
-                Edinburgh, Scotland EH1 2AB
+                Livingston, Scotland
             </div>
         `).openPopup();
     }
