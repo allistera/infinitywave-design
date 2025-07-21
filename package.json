@@ -5,9 +5,22 @@
   "main": "index.html",
   "scripts": {
     "start": "python3 -m http.server 8000",
-    "dev": "live-server ."
+    "dev": "live-server .",
+    "lint": "npm run lint:html && npm run lint:css && npm run lint:js",
+    "lint:html": "htmlhint \"*.html\"",
+    "lint:css": "stylelint \"*.css\"",
+    "lint:js": "eslint \"*.js\"",
+    "format:check": "prettier --check \"*.html\" \"*.css\" \"*.js\""
   },
   "keywords": ["design", "architecture", "portfolio", "website"],
   "author": "InfinityWave Design",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "htmlhint": "^1.1.4",
+    "stylelint": "^15.11.0",
+    "stylelint-config-standard": "^34.0.0",
+    "eslint": "^8.55.0",
+    "prettier": "^3.1.0"
+  }
 }
