@@ -225,6 +225,35 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('load', function() {
         document.body.classList.add('loaded');
     });
+
+    // Initialize interactive map
+    const mapElement = document.getElementById('map');
+    if (mapElement && typeof L !== 'undefined') {
+        // Edinburgh, Scotland coordinates
+        const edinburghLat = 55.9533;
+        const edinburghLng = -3.1883;
+        
+        // Initialize the map
+        const map = L.map('map').setView([edinburghLat, edinburghLng], 13);
+        
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+        
+        // Add marker for our studio location
+        const marker = L.marker([edinburghLat, edinburghLng]).addTo(map);
+        
+        // Add popup to marker
+        marker.bindPopup(`
+            <div style="text-align: center;">
+                <strong>InfinityWave Design</strong><br>
+                123 Design Street<br>
+                Creative Quarter<br>
+                Edinburgh, Scotland EH1 2AB
+            </div>
+        `).openPopup();
+    }
 });
 
 // Utility function to debounce events
